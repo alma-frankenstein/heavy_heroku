@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <a class="link" href="{{ url_for('index') }}">home</a>
+    <a class="link" href="{{ url_for('logout') }}">logout</a>
+
+        <tr valign="top">
+        <h2>user: {{ user.username }}</h2>
+            <p>{{ user.followers.count() }} followers, {{ user.followed.count() }} following</p>
+            {% if user == current_user %}
+
+            {% elif not current_user.is_following(user) %}
+            <p>
+                <form action="{{ url_for('follow', username=user.username) }}"method="post">
+                    {{ form.hidden_tag() }}
+                    {{ form.submit(value='follow') }}
+        </form>
+            </p>
+            {% else %}
+              <p>
+                <form action="{{ url_for('unfollow', username=user.username) }}"method="post">
+                    {{ form.hidden_tag() }}
+                    {{ form.submit(value='unfollow') }}
+        </form>
+            </p>
+            {% endif %}
+        </tr>
+
+    <hr>
+    {% for song in songs %}
+        {% include '_song.html' %}
+    {% endfor %}
+{% endblock %}
