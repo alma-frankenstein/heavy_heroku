@@ -1,4 +1,4 @@
-# combines __init__.py, routes.py, and app.py from Grinberg
+# combines app/__init__.py, app/routes.py, and microblog.py from Grinberg
 
 from flask import Flask, render_template, flash, redirect, url_for, request
 from config import Config
