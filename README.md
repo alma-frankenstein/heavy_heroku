@@ -26,6 +26,7 @@ cd to the heavyRotation directory.
 * Python
 * Flask
 * SQLAlchemy
+* Jinja2
 
 # Known Bugs
 No known bugs at this time.
