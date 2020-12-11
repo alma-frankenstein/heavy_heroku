@@ -20,6 +20,14 @@ To run on your localhost, clone this repo using:
 
 cd to the heavyRotation directory.
 
+Install Python3, if you haven't already
+
+Create a virtual environment for the project:
+* Run ```python3 -m venv venv```
+* Activate it with ```source venv/bin/activate```
+
+
+Run ```pip install -r requirements.txt``` to install all dependencies
 
 ## Technologies Used
 
