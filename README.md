@@ -28,7 +28,11 @@ Create a virtual environment for the project:
 
 Run ```pip install -r requirements.txt``` to install all dependencies
 
-Create a migration repository: ```flask db init```
+Create a migration repository for a database: ```flask db init```
+
+To add changes to the database:
+* Run ```flask db migrate``` to generate a migration script
+* Then ```flask db upgrade``` to add the changes to the database
 
 ## Technologies Used
 
