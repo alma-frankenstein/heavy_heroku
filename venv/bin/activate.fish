@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/alma/Alma/flask_projects/heavy_rotation/venv"
+set -gx VIRTUAL_ENV "/home/alma/Desktop/heavy_proto/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
