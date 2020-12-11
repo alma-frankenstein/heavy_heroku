@@ -30,7 +30,7 @@ def index():
         song = Song(song_name=form.song.data, artist_name=form.artist.data, contributer=current_user)
         db.session.add(song)
         db.session.commit()
-        flash('you have posted a song')
+        # flash('you have posted a song')
         redirect(url_for('index'))
     songs = [
         {
@@ -39,7 +39,7 @@ def index():
             'artist_name': 'lele'
         }
     ]
-    return render_template('home.html',  songs=songs, form=form)
+    return render_template('index.html',  songs=songs, form=form)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
