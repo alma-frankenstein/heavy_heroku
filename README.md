@@ -26,8 +26,9 @@ Create a virtual environment for the project:
 * Run ```python3 -m venv venv```
 * Activate it with ```source venv/bin/activate```
 
-
 Run ```pip install -r requirements.txt``` to install all dependencies
+
+Create a migration repository: ```flask db init```
 
 ## Technologies Used
 
