@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <a class="link" href="{{ url_for('user', username=current_user.username) }}">profile</a>
-    <a class="link" href="{{ url_for('logout') }}">logout</a>
+    <a style="color: magenta;" class="link" href="{{ url_for('user', username=current_user.username) }}">profile</a>
+    <a style="color: magenta;" class="link" href="{{ url_for('logout') }}">logout</a>
 
     <h2>home page</h2>
     <h3>hi, {{ current_user.username }}!</h3>
@@ -12,14 +12,14 @@
             {{ form.song.label }}<br>
             {{ form.song(cols=32, rows=4) }}<br>
             {% for error in form.song.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+            <span style="color: magenta;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>
             {{ form.artist.label }}<br>
             {{ form.artist(cols=32, rows=4) }}<br>
             {% for error in form.artist.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+            <span style="color: magenta;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>{{ form.submit() }}</p>

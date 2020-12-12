@@ -20,6 +20,19 @@ To run on your localhost, clone this repo using:
 
 cd to the heavyRotation directory.
 
+Install Python3, if you haven't already
+
+Create a virtual environment for the project:
+* Run ```python3 -m venv venv```
+* Activate it with ```source venv/bin/activate```
+
+Run ```pip install -r requirements.txt``` to install all dependencies
+
+Create a migration repository for a database: ```flask db init```
+
+To add changes to the database:
+* Run ```flask db migrate``` to generate a migration script
+* Then ```flask db upgrade``` to add the changes to the database
 
 ## Technologies Used
 
@@ -27,6 +40,7 @@ cd to the heavyRotation directory.
 * Flask
 * SQLAlchemy
 * Jinja2
+* Flask-Login
 
 # Known Bugs
 No known bugs at this time.
