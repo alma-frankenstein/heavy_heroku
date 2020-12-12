@@ -40,6 +40,7 @@ To add changes to the database:
 * Flask
 * SQLAlchemy
 * Jinja2
+* Flask-Login
 
 # Known Bugs
 No known bugs at this time.
