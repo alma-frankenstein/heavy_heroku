@@ -16,7 +16,7 @@ login.login_view = 'login'
 
 #from models import Song, User
 from models import *
-from forms import LoginForm, RegistrationForm, EmptyForm, PostForm
+from forms import LoginForm, RegistrationForm, EmptyForm, PostForm, EditProfileForm
 
 @app.shell_context_processor
 def make_shell_context():
@@ -84,10 +84,26 @@ def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     songs = [
         {'contributer': user, 'song_name': 'I Go To Sleep', 'artist_name': 'Anika'},
-        {'contributer': user, 'song_name': 'GAmma Ray', 'artist_name': 'Beck'},
+        {'contributer': user, 'song_name': 'Gamma Ray', 'artist_name': 'Beck'},
     ]
     form = EmptyForm()
     return render_template('user.html', user=user, songs=songs, form=form)
+
+@app.route('/edit_profile', methods=['GET', 'POST'])
+@login_required
+def edit_profile():
+    form = EditProfileForm()
+    if form.validate_on_submit():
+        current_user.username = form.username.data
+        current_user.about_me = form.about_me.data
+        db.session.commit()
+        #flash('Your changes have been saved.')
+        return redirect(url_for('edit_profile'))
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+        form.about_me.data = current_user.about_me
+    return render_template('edit_profile.html', title='edit profile',
+                           form=form)
 
 @app.route('/follow/<username>', methods=['POST'])
 @login_required

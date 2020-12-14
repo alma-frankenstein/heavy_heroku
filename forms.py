@@ -27,3 +27,8 @@ class PostForm(FlaskForm):
     song = TextAreaField('song name', validators=[DataRequired(), Length(min=1, max=60)])
     artist = TextAreaField('artist name', validators=[DataRequired(), Length(min=1, max=60)])
     submit = SubmitField('submit')
+
+class EditProfileForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    about_me = TextAreaField('About me', validators=[Length(min=0, max=140)])
+    submit = SubmitField('Submit')

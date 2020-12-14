@@ -3,10 +3,16 @@
 {% block content %}
     <a class="link" href="{{ url_for('index') }}">home</a>
     <a class="link" href="{{ url_for('logout') }}">logout</a>
-
+    {% if user == current_user %}
+    <a class="link" href="{{ url_for('edit_profile') }}">edit your profile</a>
+    {% endif %}
+    <table>
         <tr valign="top">
+        
         <h2>user: {{ user.username }}</h2>
+        {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
             <p>{{ user.followers.count() }} followers, {{ user.followed.count() }} following</p>
+    
             {% if user == current_user %}
 
             {% elif not current_user.is_following(user) %}
@@ -25,8 +31,10 @@
             </p>
             {% endif %}
         </tr>
+    </table>
 
     <hr>
+    <h4>posted songs:</h4>
     {% for song in songs %}
         {% include '_song.html' %}
     {% endfor %}

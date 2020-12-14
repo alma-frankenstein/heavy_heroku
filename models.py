@@ -17,6 +17,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), index=True, unique=True)
     password_hash = db.Column(db.String(128))
     songs = db.relationship('Song', backref='contributer', lazy='dynamic')
+    about_me = db.Column(db.String(140))
 
     followed = db.relationship(         # many-to-many
         'User', secondary=followers,
