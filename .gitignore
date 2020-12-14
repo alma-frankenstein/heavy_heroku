@@ -1,4 +1,4 @@
 notes.txt
 venv
 app.db
-__pycache__
+__pycache__/
