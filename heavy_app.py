@@ -31,7 +31,7 @@ def index():
         song = Song(song_name=form.song.data, artist_name=form.artist.data, contributer=current_user)
         db.session.add(song)
         db.session.commit()
-        # flash('you have posted a song')
+        flash('you have posted a song')
         redirect(url_for('index'))
     songs = [
         {
@@ -94,16 +94,15 @@ def user(username):
 def edit_profile():
     form = EditProfileForm()
     if form.validate_on_submit():
-        current_user.username = form.username.data
         current_user.about_me = form.about_me.data
         db.session.commit()
-        #flash('Your changes have been saved.')
-        return redirect(url_for('edit_profile'))
+        #return redirect(url_for('index'))
+        return redirect(url_for('user', username=current_user.username))
+
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
-    return render_template('edit_profile.html', title='edit profile',
-                           form=form)
+    return render_template('edit_profile.html', title='edit profile', form=form)
 
 @app.route('/follow/<username>', methods=['POST'])
 @login_required

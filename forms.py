@@ -29,6 +29,6 @@ class PostForm(FlaskForm):
     submit = SubmitField('submit')
 
 class EditProfileForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    about_me = TextAreaField('About me', validators=[Length(min=0, max=140)])
-    submit = SubmitField('Submit')
+    username = StringField('username')
+    about_me = TextAreaField('about me', validators=[Length(min=0, max=140)])
+    submit = SubmitField('submit')

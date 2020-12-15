@@ -9,7 +9,7 @@
     <table>
         <tr valign="top">
         
-        <h2>user: {{ user.username }}</h2>
+        <h2>hello, {{ user.username }}</h2>
         {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
             <p>{{ user.followers.count() }} followers, {{ user.followed.count() }} following</p>
     
