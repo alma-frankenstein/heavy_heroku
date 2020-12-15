@@ -34,6 +34,9 @@ To add changes to the database:
 * Run ```flask db migrate``` to generate a migration script
 * Then ```flask db upgrade``` to add the changes to the database
 
+To run the test suite:
+* Make sure the virtual environment is activated (see above), then run ```python tests.py```
+
 ## Technologies Used
 
 * Python

@@ -9,8 +9,9 @@ def load_user(id):
     return User.query.get(int(id))
 
 followers = db.Table('followers',      # association table
-                     db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
-                     db.Column('followed_id', db.Integer, db.ForeignKey('user.id')))
+    db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
+    db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
+)
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)  # Column instance creates field
@@ -20,11 +21,13 @@ class User(UserMixin, db.Model):
     about_me = db.Column(db.String(140))
 
     followed = db.relationship(         # many-to-many
-        'User', secondary=followers,
+        'User', secondary=followers,    # user being followed (left side following right side)
         primaryjoin=(followers.c.follower_id==id),
         secondaryjoin=(followers.c.followed_id==id),
         backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
-
+        # The "c" is an attribute of SQLAlchemy tables that are not defined as models. For these tables, 
+        # the table columns are all exposed as sub-attributes of this "c" attribute.
+   
     def __repr__(self):
         return '<User {}>'.format(self.username)
 

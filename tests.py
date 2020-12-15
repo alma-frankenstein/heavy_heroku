@@ -23,6 +23,7 @@ class UserModelCase(unittest.TestCase):
         u2 = User(username='susan')
         db.session.add(u1)
         db.session.add(u2)
+        db.session.commit()
         self.assertEqual(u1.followed.all(), [])
         self.assertEqual(u1.followers.all(), [])
 
