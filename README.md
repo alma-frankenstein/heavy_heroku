@@ -11,6 +11,10 @@ The structure of this app is largely based on the tutorial in Miguel Grinberg's 
 Users can:
 * Post which songs they have on heavy rotation
 * Follow other users and see their posts
+* Add 'about me' information to their profile
+
+Other features include:
+* Pagination
 
 ## Setup
 

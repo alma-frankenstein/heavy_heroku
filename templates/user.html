@@ -3,13 +3,14 @@
 {% block content %}
     <a class="link" href="{{ url_for('index') }}">home</a>
     <a class="link" href="{{ url_for('logout') }}">logout</a>
+    <a class="link" href="{{ url_for('browse') }}">browse</a>
     {% if user == current_user %}
     <a class="link" href="{{ url_for('edit_profile') }}">edit your profile</a>
     {% endif %}
     <table>
         <tr valign="top">
-        
-        <h2>hello, {{ user.username }}</h2>
+        <h3>profile for</h3>
+        <h2> {{ user.username }}</h2>
         {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
             <p>{{ user.followers.count() }} followers, {{ user.followed.count() }} following</p>
     
@@ -24,7 +25,7 @@
             </p>
             {% else %}
               <p>
-                <form action="{{ url_for('unfollow', username=user.username) }}"method="post">
+                <form action="{{ url_for('unfollow', username=user.username) }}" method="post">
                     {{ form.hidden_tag() }}
                     {{ form.submit(value='unfollow') }}
         </form>
@@ -38,4 +39,13 @@
     {% for song in songs %}
         {% include '_song.html' %}
     {% endfor %}
+
+    {% if next_url %}
+    <a class="link" href="{{ next_url }}">older song posts</a>
+    {% endif %}
+
+        {% if prev_url %}
+    <a class="link" href="{{ prev_url }}">newer song posts</a>
+    {% endif %}
+
 {% endblock %}
