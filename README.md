@@ -34,6 +34,9 @@ Run ```pip install -r requirements.txt``` to install all dependencies
 
 Create a migration repository for a database: ```flask db init```
 
+Still with the virtual environment activated, run ```flask run```, then open the browser window indicated
+(this will probably be http://127.0.0.1:5000/). You should see the welcome page.
+
 To add changes to the database:
 * Run ```flask db migrate``` to generate a migration script
 * Then ```flask db upgrade``` to add the changes to the database
@@ -61,3 +64,4 @@ For questions or to suggestions, please email A.Q.Frankenstein@gmail.com
 This software is licensed under the MIT license.
 
 Copyright (c) 2020 Alma Frankenstein
+
