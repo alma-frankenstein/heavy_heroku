@@ -49,7 +49,7 @@ To run the test suite:
 * Jinja2
 * Flask-Login
 
-# Known Bugs
+## Known Bugs
 No known bugs at this time.
 
 ## Contact Details
