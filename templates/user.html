@@ -10,45 +10,47 @@
     {% endif %}
 </div>
 
-    <table>
-        <tr valign="top">
-        <h3>profile for</h3>
-        <h2> {{ user.username }}</h2>
-        {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
-            <p>{{ user.followers.count() }} followers, {{ user.followed.count() }} following</p>
-    
-            {% if user == current_user %}
+<h1>Heavy Rotation</h2>
 
-            {% elif not current_user.is_following(user) %}
+<table>
+    <tr valign="top">
+    <h2>profile for</h3>
+    <h2> {{ user.username }}</h2>
+    {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+        <p>{{ user.followers.count() }} followers, {{ user.followed.count() }} following</p>
+
+        {% if user == current_user %}
+
+        {% elif not current_user.is_following(user) %}
+        <p>
+            <form action="{{ url_for('follow', username=user.username) }}"method="post">
+                {{ form.hidden_tag() }}
+                {{ form.submit(value='follow') }}
+    </form>
+        </p>
+        {% else %}
             <p>
-                <form action="{{ url_for('follow', username=user.username) }}"method="post">
-                    {{ form.hidden_tag() }}
-                    {{ form.submit(value='follow') }}
-        </form>
-            </p>
-            {% else %}
-              <p>
-                <form action="{{ url_for('unfollow', username=user.username) }}" method="post">
-                    {{ form.hidden_tag() }}
-                    {{ form.submit(value='unfollow') }}
-        </form>
-            </p>
-            {% endif %}
-        </tr>
-    </table>
+            <form action="{{ url_for('unfollow', username=user.username) }}" method="post">
+                {{ form.hidden_tag() }}
+                {{ form.submit(value='unfollow') }}
+    </form>
+        </p>
+        {% endif %}
+    </tr>
+</table>
 
-    <hr>
-    <h4>posted songs:</h4>
-    {% for song in songs %}
-        {% include '_song.html' %}
-    {% endfor %}
+<hr>
+<h4>posted songs:</h4>
+{% for song in songs %}
+    {% include '_song.html' %}
+{% endfor %}
 
-    {% if next_url %}
-    <a class="link" href="{{ next_url }}">older song posts</a>
-    {% endif %}
+{% if next_url %}
+<a class="link" href="{{ next_url }}">older song posts</a>
+{% endif %}
 
-        {% if prev_url %}
-    <a class="link" href="{{ prev_url }}">newer song posts</a>
-    {% endif %}
+    {% if prev_url %}
+<a class="link" href="{{ prev_url }}">newer song posts</a>
+{% endif %}
 
 {% endblock %}

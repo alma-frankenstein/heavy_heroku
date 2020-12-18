@@ -1,44 +1,46 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="header">
-        <a  class="link" href="{{ url_for('user', username=current_user.username) }}">profile</a>
-        <a  class="link" href="{{ url_for('logout') }}">logout</a>
-        <a class="link" href="{{ url_for('browse') }}">browse</a>
-    </div>
+<div class="header">
+    <a  class="link" href="{{ url_for('user', username=current_user.username) }}">profile</a>
+    <a  class="link" href="{{ url_for('logout') }}">logout</a>
+    <a class="link" href="{{ url_for('browse') }}">browse</a>
+</div>
 
-    <h2>home page</h2>
-    <h3>hi, {{ current_user.username }}!</h3>
-    {% if form %}
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.song.label }}<br>
-            {{ form.song(cols=32, rows=4) }}<br>
-            {% for error in form.song.errors %}
-            <span style="color: magenta;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.artist.label }}<br>
-            {{ form.artist(cols=32, rows=4) }}<br>
-            {% for error in form.artist.errors %}
-            <span style="color: magenta;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form>
-    {% endif %}
+<h1>Heavy Rotation</h2>
 
-    {% for song in songs %}
-    {% include '_song.html' %}
-    {% endfor %}
+<h2>home page</h2>
+<h2>hi, {{ current_user.username }}!</h3>
+{% if form %}
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.song.label }}<br>
+        {{ form.song(cols=32, rows=4) }}<br>
+        {% for error in form.song.errors %}
+        <span style="color: magenta;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.artist.label }}<br>
+        {{ form.artist(cols=32, rows=4) }}<br>
+        {% for error in form.artist.errors %}
+        <span style="color: magenta;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>
+{% endif %}
 
-    {% if next_url %}
-    <a class="link" href="{{ next_url }}">older song posts</a>
-    {% endif %}
+{% for song in songs %}
+{% include '_song.html' %}
+{% endfor %}
 
-    {% if prev_url %}
-    <a class="link" href="{{ prev_url }}">newer song posts</a>
-    {% endif %}
+{% if next_url %}
+<a class="link" href="{{ next_url }}">older song posts</a>
+{% endif %}
+
+{% if prev_url %}
+<a class="link" href="{{ prev_url }}">newer song posts</a>
+{% endif %}
 {% endblock %}
