@@ -33,7 +33,7 @@ def index():
         db.session.commit()
         flash('you have posted a song')
         #redirect(url_for('index'))
-        redirect(url_for('browse'))
+        redirect(url_for('user', username=current_user.username))
 
     # songs = [
     #     {
