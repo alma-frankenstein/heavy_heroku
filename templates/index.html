@@ -18,14 +18,14 @@
         {{ form.song.label }}<br>
         {{ form.song(cols=32, rows=4) }}<br>
         {% for error in form.song.errors %}
-        <span style="color: magenta;">[{{ error }}]</span>
+        <span style="color: rgb(72, 165, 44);">[{{ error }}]</span>
         {% endfor %}
     </p>
     <p>
         {{ form.artist.label }}<br>
         {{ form.artist(cols=32, rows=4) }}<br>
         {% for error in form.artist.errors %}
-        <span style="color: magenta;">[{{ error }}]</span>
+        <span style="color: rgb(72, 165, 44);">[{{ error }}]</span>
         {% endfor %}
     </p>
     <p>{{ form.submit() }}</p>

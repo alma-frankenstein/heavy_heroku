@@ -10,19 +10,19 @@
         {{ form.username.label }}<br>
         {{ form.username(size=32) }}
         {% for error in form.username.errors %}
-        <span style="color: magenta;">[{{ error }}]</span>
+        <span style="color: rgb(72, 165, 44);">[{{ error }}]</span>
         {% endfor %}
     </p>
     <p>
         {{ form.password.label }}<br>
         {{ form.password(size=32) }}
         {% for error in form.password.errors %}
-        <span style="color: magenta;">[{{ error }}]</span>
+        <span style="color: rgb(72, 165, 44);">[{{ error }}]</span>
         {% endfor %}
     </p>
     <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
     <p>{{ form.submit() }}</p>
 </form>
 
-<p>new user? <a style="color: magenta;" href="{{ url_for('register') }}">click to register</a></p>
+<p>new user? <a style="color: rgb(72, 165, 44);" href="{{ url_for('register') }}">click to register</a></p>
 {% endblock %}
