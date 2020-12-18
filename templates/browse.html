@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="header">
+  <a class="link" href="{{ url_for('index') }}">post a song</a>
+  <a class="link" href="{{ url_for('user', username=current_user.username) }}">profile</a>
+  <a class="link" href="{{ url_for('logout') }}">logout</a>
+ 
+</div>
+
+<h1>Heavy Rotation</h2>
+
+<h2>hi, {{ current_user.username }}!</h3>
+<h2>browse all recent postings</h2>
+
+{% for song in songs %}
+{% include '_song.html' %}
+{% endfor %}
+
+{% if next_url %}
+<a class="link" href="{{ next_url }}">older song posts</a>
+{% endif %}
+
+{% if prev_url %}
+<a class="link" href="{{ prev_url }}">newer song posts</a>
+{% endif %}
+{% endblock %}

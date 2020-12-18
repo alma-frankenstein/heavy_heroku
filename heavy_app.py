@@ -32,7 +32,9 @@ def index():
         db.session.add(song)
         db.session.commit()
         flash('you have posted a song')
-        redirect(url_for('index'))
+        #redirect(url_for('index'))
+        redirect(url_for('browse'))
+
     # songs = [
     #     {
     #      'contributer': {'username': 'David'},
@@ -40,14 +42,15 @@ def index():
     #         'artist_name': 'lele'
     #     }
     # ]
-    page = request.args.get('page', 1, type=int)
+    # page = request.args.get('page', 1, type=int)
     # songs = current_user.followed_songs().all() #followed_posts() method in User model
-    songs = current_user.followed_songs().paginate(page, app.config['SONGS_PER_PAGE'], False)
-    next_url = url_for('index', page=songs.next_num) \
-        if songs.has_next else None
-    prev_url = url_for('index', page=songs.prev_num) \
-        if songs.has_prev else None
-    return render_template('index.html',  songs=songs.items, form=form, next_url=next_url, prev_url=prev_url)
+    # songs = current_user.followed_songs().paginate(page, app.config['SONGS_PER_PAGE'], False)
+    # next_url = url_for('index', page=songs.next_num) \
+    #     if songs.has_next else None
+    # prev_url = url_for('index', page=songs.prev_num) \
+    #     if songs.has_prev else None
+    # return render_template('index.html',  songs=songs.items, form=form, next_url=next_url, prev_url=prev_url)
+    return render_template('index.html',form=form)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -164,11 +167,11 @@ def browse():
     # songs = Song.query.order_by(Song.timestamp.desc()).all()
     songs = Song.query.order_by(Song.timestamp.desc()).paginate(
         page, app.config['SONGS_PER_PAGE'], False)
-    next_url = url_for('index', page=songs.next_num) \
+    next_url = url_for('browse', page=songs.next_num) \
         if songs.has_next else None
-    prev_url = url_for('index', page=songs.prev_num) \
+    prev_url = url_for('browse', page=songs.prev_num) \
         if songs.has_prev else None
-    return render_template('index.html', songs=songs.items, next_url=next_url, prev_url=prev_url)
+    return render_template('browse.html', songs=songs.items, next_url=next_url, prev_url=prev_url)
 
 @app.errorhandler(404)
 def page_not_found(e):
