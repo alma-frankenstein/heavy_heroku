@@ -38,7 +38,13 @@
 
 <h4>posted songs:</h4>
 {% for song in songs %}
-    {% include '_song.html' %}
+{% include '_song.html' %}
+<!-- <div class="singleSong">
+    <a style="color: rgb(72, 165, 44);" href="{{ url_for('user', username=song.contributer.username) }}">
+        <img src="../static/cassette.jpg" width="40">{{ song.contributer.username }}</a>
+    posted: <br>{{ song.song_name }} by {{ song.artist_name }}
+    <br>
+</div> -->
 {% endfor %}
 
 {% if next_url %}

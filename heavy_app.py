@@ -165,8 +165,7 @@ def unfollow(username):
 def browse():
     page = request.args.get('page', 1, type=int)
     # songs = Song.query.order_by(Song.timestamp.desc()).all()
-    songs = Song.query.order_by(Song.timestamp.desc()).paginate(
-        page, app.config['SONGS_PER_PAGE'], False)
+    songs = Song.query.order_by(Song.timestamp.desc()).paginate(page, app.config['SONGS_PER_PAGE'], False)
     next_url = url_for('browse', page=songs.next_num) \
         if songs.has_next else None
     prev_url = url_for('browse', page=songs.prev_num) \
