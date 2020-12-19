@@ -1,7 +1,6 @@
 <div class="singleSong">
     <a style="color: rgb(72, 165, 44);" href="{{ url_for('user', username=song.contributer.username) }}">
-    {{ song.contributer.username }}</a>
- 
+    <img src="static/cassette.jpg" alt="placeholder image" width="40">{{ song.contributer.username }}</a>
     posted: <br>{{ song.song_name }} by {{ song.artist_name }}
     <br>
 </div>
