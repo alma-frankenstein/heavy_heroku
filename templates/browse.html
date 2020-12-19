@@ -18,10 +18,10 @@
 {% endfor %}
 
 {% if next_url %}
-<a class="link" href="{{ next_url }}">older song posts</a>
+<a class="link" id="pag_url" href="{{ next_url }}">older song posts</a>
 {% endif %}
 
 {% if prev_url %}
-<a class="link" href="{{ prev_url }}">newer song posts</a>
+<a class="link" id="pag_url" href="{{ prev_url }}">newer song posts</a>
 {% endif %}
 {% endblock %}
