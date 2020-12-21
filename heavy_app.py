@@ -28,7 +28,7 @@ def make_shell_context():
 def index():
     form = PostForm()
     if form.validate_on_submit():
-        song = Song(song_name=form.song.data, artist_name=form.artist.data, contributer=current_user)
+        song = Song(song_name=form.song.data, artist_name=form.artist.data, song_link=form.song_link.data, contributer=current_user)
         db.session.add(song)
         db.session.commit()
         flash('you have posted a song')
