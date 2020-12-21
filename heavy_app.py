@@ -31,9 +31,10 @@ def index():
         song = Song(song_name=form.song.data, artist_name=form.artist.data, song_link=form.song_link.data, contributer=current_user)
         db.session.add(song)
         db.session.commit()
-        flash('you have posted a song')
+        #flash('you have posted a song')
         #redirect(url_for('index'))
-        redirect(url_for('user', username=current_user.username))
+        # redirect(url_for('user', username=current_user.username))
+        redirect(url_for('browse'))
 
     # songs = [
     #     {
