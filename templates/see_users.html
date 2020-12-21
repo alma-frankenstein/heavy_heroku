@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="header">
+  <a class="link" href="{{ url_for('index') }}">post a song</a>
+  <a class="link" href="{{ url_for('user', username=current_user.username) }}">profile</a>
+  <a class="link" href="{{ url_for('logout') }}">logout</a>
+ 
+</div>
+
+<h1>Heavy Rotation</h2>
+
+<h2>hi, {{ current_user.username }}!</h3>
+<h2>check out people to follow</h2>
+
+{% if users %}
+{% for user in users %}
+<div class="singleUser">
+  <a style="color: rgb(72, 165, 44);" href="{{ url_for('user', username=user.username) }}">
+{{ user.username }}</a>
+{% endfor %}
+{% else %}
+<h3>no other users yet</h3>
+{% endif %}
+
+
+
+{% if next_url %}
+<a class="link" id="pag_url" href="{{ next_url }}">back</a>
+{% endif %}
+
+{% if prev_url %}
+<a class="link" id="pag_url" href="{{ prev_url }}">next</a>
+{% endif %}
+{% endblock %}

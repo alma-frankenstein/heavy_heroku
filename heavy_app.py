@@ -147,6 +147,13 @@ def browse():
         if songs.has_prev else None
     return render_template('browse.html', songs=songs.items, next_url=next_url, prev_url=prev_url)
 
+@app.route('/see_users')
+@login_required
+def see_users():
+    users = User.query.all()
+    return render_template('see_users.html', users=users)
+
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
