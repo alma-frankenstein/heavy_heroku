@@ -14,7 +14,6 @@ migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
 
-#from models import Song, User
 from models import *
 from forms import LoginForm, RegistrationForm, EmptyForm, PostForm, EditProfileForm
 
@@ -27,30 +26,13 @@ def make_shell_context():
 @login_required
 def index():
     form = PostForm()
-    if form.validate_on_submit():
+    # if form.validate_on_submit():
+    if request.method == 'POST':
         song = Song(song_name=form.song.data, artist_name=form.artist.data, song_link=form.song_link.data, contributer=current_user)
         db.session.add(song)
         db.session.commit()
-        #flash('you have posted a song')
-        #redirect(url_for('index'))
-        # redirect(url_for('user', username=current_user.username))
-        redirect(url_for('browse'))
-
-    # songs = [
-    #     {
-    #      'contributer': {'username': 'David'},
-    #         'song_name': 'pacific coast',
-    #         'artist_name': 'lele'
-    #     }
-    # ]
-    # page = request.args.get('page', 1, type=int)
-    # songs = current_user.followed_songs().all() #followed_posts() method in User model
-    # songs = current_user.followed_songs().paginate(page, app.config['SONGS_PER_PAGE'], False)
-    # next_url = url_for('index', page=songs.next_num) \
-    #     if songs.has_next else None
-    # prev_url = url_for('index', page=songs.prev_num) \
-    #     if songs.has_prev else None
-    # return render_template('index.html',  songs=songs.items, form=form, next_url=next_url, prev_url=prev_url)
+        flash('you have posted a song')
+        return redirect(url_for('browse'))
     return render_template('index.html',form=form)
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -93,12 +75,6 @@ def logout():
 @login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
-    # songs = [
-    #     {'contributer': user, 'song_name': 'I Go To Sleep', 'artist_name': 'Anika'},
-    #     {'contributer': user, 'song_name': 'Gamma Ray', 'artist_name': 'Beck'},
-    # ]
-    #songs = current_user.songs.all() 
-    # songs = Song.query.order_by(Song.timestamp.desc()).all()
     page =  request.args.get('page', 1, type=int)
     songs = user.songs.order_by(Song.timestamp.desc()).paginate(page, app.config['SONGS_PER_PAGE'], False)
     form = EmptyForm()
@@ -115,7 +91,6 @@ def edit_profile():
     if form.validate_on_submit():
         current_user.about_me = form.about_me.data
         db.session.commit()
-        #return redirect(url_for('index'))
         return redirect(url_for('user', username=current_user.username))
 
     elif request.method == 'GET':
@@ -165,7 +140,6 @@ def unfollow(username):
 @login_required
 def browse():
     page = request.args.get('page', 1, type=int)
-    # songs = Song.query.order_by(Song.timestamp.desc()).all()
     songs = Song.query.order_by(Song.timestamp.desc()).paginate(page, app.config['SONGS_PER_PAGE'], False)
     next_url = url_for('browse', page=songs.next_num) \
         if songs.has_next else None
