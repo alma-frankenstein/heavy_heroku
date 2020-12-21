@@ -13,13 +13,12 @@
     <title>Heavy Rotation</title>
     <style type="text/css">
     body {
-    /* background-color: silver; */
     color: rgb(112, 205, 84);
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: x-large;
-    margin-left: 8%;
-    margin-right: 8%;
+    margin-left: 9%;
+    margin-right: 9%;
     background-color: #222222;
     background: repeating-linear-gradient(45deg, #555454 0%, #464545 10%, #494848 0%, #414040 50%) 0 / 15px 15px;
     background-image: url(../static/cassette.jpg);
@@ -58,46 +57,33 @@
     h2 {
       font-family: 'Russo One';
     }
-/*-------------------------------------------------------------*/
-/* neon flicker */
 
     p {
       color: white;
     }
 
+    .footer {
+      background-color: rgba(44, 43, 43, 0.5);
+    }
 
-/* #container {
-  width: 500px;
-  margin: auto;
-} */
-
-/*Neon*/
-/* p {
-  text-align: center;
-  font-size: 7em;
-  margin: 20px 0 20px 0;
-} */
-
-  h1 {
+  /* h1 {
     text-decoration: none;
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
     transition: all 0.5s;
-  }
+  } */
 
   h1{
     color: rgb(112, 205, 84);
     font-family: 'Russo One', Arial, Helvetica, sans-serif;
     font-size: 4em;
+    text-decoration: none;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
     -webkit-animation: neon1 1s ease-in-out infinite alternate;
     -moz-animation: neon1 1s ease-in-out infinite alternate;
     animation: neon1 1s ease-in-out infinite alternate;
-  }
-
-  /* p:nth-child(2) a {
-    font-size: 1.5em;
-    color: #228DFF;
-    font-family: Iceland;
   }
 
   /*glow for webkit*/
@@ -158,6 +144,9 @@
   {% endwith %}
   <div class="mainBlock">
   {% block content %}{% endblock %}
-</div>
+  </div>
+  <div class="footer">
+    <p>copyright (c) Alma Frankenstein, 2020</p>
+  </div>
 </body>
 </html>
