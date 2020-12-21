@@ -37,6 +37,7 @@
 <hr>
 
 <h4>{{ user.username }}'s songs:</h4>
+{% if songs %}
 {% for song in songs %}
 {% include '_song.html' %}
 <!-- <div class="singleSong">
@@ -46,6 +47,9 @@
     <br>
 </div> -->
 {% endfor %}
+{% else %}
+<h3>no songs posted yet</h3>
+{% endif %}
 
 {% if next_url %}
 <a class="link" id="pag_url" href="{{ next_url }}">older song posts</a>
