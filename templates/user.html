@@ -40,12 +40,6 @@
 {% if songs %}
 {% for song in songs %}
 {% include '_song.html' %}
-<!-- <div class="singleSong">
-    <a style="color: rgb(72, 165, 44);" href="{{ url_for('user', username=song.contributer.username) }}">
-        <img src="../static/cassette.jpg" width="40">{{ song.contributer.username }}</a>
-    posted: <br>{{ song.song_name }} by {{ song.artist_name }}
-    <br>
-</div> -->
 {% endfor %}
 {% else %}
 <h3>no songs posted yet</h3>
