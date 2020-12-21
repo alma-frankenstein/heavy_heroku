@@ -8,7 +8,7 @@
 
     <!-- <a style="color: rgb(62, 155, 34);" href="https://open.spotify.com/track/0WkAZjKe3LSfkRvhtNNtBf">
     {{ song.song_name }} by {{ song.artist_name }}</a> -->
-    <a style="color: rgb(62, 155, 34);" href="{{ song.song_link }}">
+    <a style="color: rgb(62, 155, 34);" href="{{ song.song_link }}" target="blank">
         {{ song.song_name }} by {{ song.artist_name }}</a>
     {% else %}
     {{ song.song_name }} by {{ song.artist_name }}

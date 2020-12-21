@@ -5,11 +5,12 @@
 ## Description
 Welcome! Heavy Rotation is a blog where people can post the songs they've been listening to on repeat lately, and see what their friends are listening to.
 
-The structure of this app is largely based on the tutorial in Miguel Grinberg's excellent book 'Flask Web Development' (O'Reilly, 2018).
+Special thanks to Miguel Grinberg for his excellent book 'Flask Web Development' (O'Reilly, 2018) and many online tutorials.
 
 ## Specs
 Users can:
 * Post which songs they have on heavy rotation
+* Click a link to a posted song (if one has been added) and have that link open in a new browser tab
 * Follow other users and see their posts
 * Add 'about me' information to their profile
 
@@ -38,6 +39,7 @@ Still with the virtual environment activated, run ```flask run```, then open the
 (this will probably be http://127.0.0.1:5000/). You should see the welcome page.
 
 To add changes to the database:
+* Add the change to models.py
 * Run ```flask db migrate``` to generate a migration script
 * Then ```flask db upgrade``` to add the changes to the database
 
