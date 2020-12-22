@@ -55,7 +55,7 @@ To run the test suite:
   >>> users
 
 * Get user by ID:
-  >>>userById = User.query.get([id])
+  `>>>` userById = User.query.get([id])
 
 * See songs ordered by most recently added:
   >>> Song.query.order_by(timestamp.desc()).all()
