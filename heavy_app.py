@@ -1,11 +1,12 @@
 # combines app/__init__.py, app/routes.py, and microblog.py from Grinberg
 
-from flask import Flask, render_template, flash, redirect, url_for, request
+from flask import Flask, render_template, flash, redirect, url_for, request, abort
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager, current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
+import os
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -89,6 +90,13 @@ def user(username):
 def edit_profile():
     form = EditProfileForm()
     if form.validate_on_submit():
+        uploaded_file = request.files['file']
+        if uploaded_file.filename != '':
+            file_ext = os.path.splitext(uploaded_file.filename)[1]
+            if file_ext not in app.config['UPLOAD_EXTENSIONS']:
+                abort(400)
+            else:
+                uploaded_file.save(uploaded_file.filename)
         current_user.about_me = form.about_me.data
         db.session.commit()
         return redirect(url_for('user', username=current_user.username))
@@ -160,3 +168,11 @@ def page_not_found(e):
 @app.errorhandler(500)
 def internal_server_error(e):
     return render_template('500.html'), 500
+
+@app.errorhandler(413)
+def file_too_large(e):
+    return render_template('413.html'), 413
+
+@app.errorhandler(400)
+def bad_request(e):
+    return render_template('400.html'), 400

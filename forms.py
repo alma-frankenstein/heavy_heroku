@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField, FileField
 from wtforms.validators import DataRequired, EqualTo, ValidationError, Length
 from models import User
 
@@ -30,6 +30,7 @@ class PostForm(FlaskForm):
     submit = SubmitField('submit')
 
 class EditProfileForm(FlaskForm):
+    file = FileField('File')
     username = StringField('username')
     about_me = TextAreaField('about me', validators=[Length(min=0, max=140)])
     submit = SubmitField('submit')
