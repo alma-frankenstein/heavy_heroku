@@ -2,3 +2,4 @@ notes.txt
 venv
 app.db
 __pycache__/
+static/avatars
