@@ -92,6 +92,7 @@ def edit_profile():
     # format file name
     userIdStr = str(current_user.get_id())
     avatarLocation = 'static/avatars/'+ userIdStr + '.jpeg'
+    avatarFromUser = '../static/avatars/'+ userIdStr + '.jpeg'
     if form.validate_on_submit():
         uploaded_file = request.files['file']
         if uploaded_file.filename != '':
@@ -104,7 +105,7 @@ def edit_profile():
                 uploaded_file.save(avatarLocation)
         current_user.about_me = form.about_me.data
         db.session.commit()
-        return redirect(url_for('user', username=current_user.username))
+        return redirect(url_for('user', username=current_user.username, avatarLocation=avatarLocation, avatarFromUser=avatarFromUser))
 
     elif request.method == 'GET':
         form.username.data = current_user.username
