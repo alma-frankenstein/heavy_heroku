@@ -35,6 +35,8 @@ Run ```pip install -r requirements.txt``` to install all dependencies
 
 Create a migration repository for a database: ```flask db init```
 
+Add a subdirectory in the 'static' folder called 'avatars' (this folder is in .gitignore).
+
 Still with the virtual environment activated, run ```flask run```, then open the browser window indicated
 (this will probably be http://127.0.0.1:5000/). You should see the welcome page.
 
@@ -55,6 +57,7 @@ To run the test suite:
 * Flask-Login
 
 ## Known Bugs
+
 No known bugs at this time.
 
 ## Contact Details
