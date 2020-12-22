@@ -76,7 +76,7 @@ To run the test suite:
 
   `>>>` db.session.commit()
 
-  * In order for these changes to, exit then restart the shell:
+  * In order for these changes to show, exit then restart the shell:
 
   `>>>` exit()
 
