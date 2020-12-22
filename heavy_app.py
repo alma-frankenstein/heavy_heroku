@@ -89,6 +89,9 @@ def user(username):
 @login_required
 def edit_profile():
     form = EditProfileForm()
+    # format file name
+    userIdStr = str(current_user.get_id())
+    avatarLocation = 'static/avatars/'+ userIdStr + '.jpeg'
     if form.validate_on_submit():
         uploaded_file = request.files['file']
         if uploaded_file.filename != '':
@@ -96,7 +99,9 @@ def edit_profile():
             if file_ext not in app.config['UPLOAD_EXTENSIONS']:
                 abort(400)
             else:
-                uploaded_file.save(uploaded_file.filename)
+                # uploaded_file.save(uploaded_file.filename)
+                # uploaded_file.save(os.path.join('static/avatars', current_user.get_id()))
+                uploaded_file.save(avatarLocation)
         current_user.about_me = form.about_me.data
         db.session.commit()
         return redirect(url_for('user', username=current_user.username))
