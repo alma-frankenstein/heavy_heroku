@@ -51,24 +51,34 @@ To run the test suite:
 #### Examining the Database: Some Basics
 * In the terminal with the virtrual environment activated, run ```flask shell```
 * See all users:
-  >>> users = User.query.all() 
-  >>> users
+
+  `>>>` users = User.query.all() 
+  
+  `>>>` users
 
 * Get user by ID:
+
   `>>>` userById = User.query.get([id])
 
 * See songs ordered by most recently added:
-  >>> Song.query.order_by(timestamp.desc()).all()
+  
+  `>>>` Song.query.order_by(timestamp.desc()).all()
 
 * If you have been added songs to test the app and would like to clear them all (same for users):
-  >>> songs = Song.query.all()
-  >>> for s in songs:
+  
+  `>>>` songs = Song.query.all()
+  
+  `>>>` for s in songs:
+
   ...     db.session.delete(s)
+
   ... 
-  >>> db.session.commit()
+
+  `>>>` db.session.commit()
 
   * In order for these changes to, exit then restart the shell:
-  >>> exit()
+
+  `>>>` exit()
 
 ## Technologies Used
 
