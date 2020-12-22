@@ -48,6 +48,28 @@ To add changes to the database:
 To run the test suite:
 * Make sure the virtual environment is activated (see above), then run ```python tests.py```
 
+#### Examining the Database: Some Basics
+* In the terminal with the virtrual environment activated, run ```flask shell```
+* See all users:
+  >>> users = User.query.all() 
+  >>> users
+
+* Get user by ID:
+  >>>userById = User.query.get([id])
+
+* See songs ordered by most recently added:
+  >>> Song.query.order_by(timestamp.desc()).all()
+
+* If you have been added songs to test the app and would like to clear them all (same for users):
+  >>> songs = Song.query.all()
+  >>> for s in songs:
+  ...     db.session.delete(s)
+  ... 
+  >>> db.session.commit()
+
+  * In order for these changes to, exit then restart the shell:
+  >>> exit()
+
 ## Technologies Used
 
 * Python
@@ -55,6 +77,23 @@ To run the test suite:
 * SQLAlchemy
 * Jinja2
 * Flask-Login
+* CSS
+
+## Helpful Resources
+* CSS blinking neon:
+    https://codemyui.com/various-color-neon-glow-for-text-in-css/
+* Python basics:
+    'Python Crash Course' by Eric Matthes (No Starch Press, 2015)
+* Python documentation:
+    https://www.python.org/doc/
+* Flask basics:
+    https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
+* Intermediate Flask:
+    'Flask Web Development' by Miguel Grinberg (O'Reilly, 2018)
+* Flask documentation:
+    https://flask.palletsprojects.com/en/1.1.x/
+* Spotify API:
+    https://spotipy.readthedocs.io/en/2.16.1/#features
 
 ## Known Bugs
 
