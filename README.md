@@ -16,6 +16,8 @@ Users can:
 
 Other features include:
 * Pagination
+* Picture uploads
+* User authentication
 
 ## Setup
 
@@ -52,7 +54,7 @@ To run the test suite:
 * In the terminal with the virtrual environment activated, run ```flask shell```
 * See all users:
 
-  `>>>` users = User.query.all() 
+  `>>>` users = User.query.all() https://github.com/alma-frankenstein/heavy_proto
   
   `>>>` users
 

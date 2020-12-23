@@ -32,5 +32,5 @@ class PostForm(FlaskForm):
 class EditProfileForm(FlaskForm):
     file = FileField('File')
     username = StringField('username')
-    about_me = TextAreaField('about me', validators=[Length(min=0, max=140)])
+    about_me = TextAreaField('about me', validators=[Length(min=0, max=300)])
     submit = SubmitField('submit')
