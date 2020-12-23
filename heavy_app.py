@@ -27,7 +27,6 @@ def make_shell_context():
 @login_required
 def index():
     form = PostForm()
-    # if form.validate_on_submit():
     if request.method == 'POST':
         song = Song(song_name=form.song.data, artist_name=form.artist.data, song_link=form.song_link.data, contributer=current_user)
         db.session.add(song)
@@ -89,7 +88,6 @@ def user(username):
 @login_required
 def edit_profile():
     form = EditProfileForm()
-    # format file name
     userIdStr = str(current_user.get_id())
     avatarLocation = 'static/avatars/'+ userIdStr + '.jpeg'
     avatarFromUser = '../static/avatars/'+ userIdStr + '.jpeg'
@@ -100,8 +98,6 @@ def edit_profile():
             if file_ext not in app.config['UPLOAD_EXTENSIONS']:
                 abort(400)
             else:
-                # uploaded_file.save(uploaded_file.filename)
-                # uploaded_file.save(os.path.join('static/avatars', current_user.get_id()))
                 uploaded_file.save(avatarLocation)
         current_user.about_me = form.about_me.data
         db.session.commit()
