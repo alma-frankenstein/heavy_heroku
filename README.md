@@ -5,6 +5,8 @@
 ## Description
 Welcome! Heavy Rotation is a blog where people can post the songs they've been listening to on repeat lately, and see what their friends are listening to.
 
+To use the site in your browser, visit [https://heavy-rotation.herokuapp.com/](https://heavy-rotation.herokuapp.com/)
+
 Special thanks to Miguel Grinberg for his excellent book 'Flask Web Development' (O'Reilly, 2018) and many online tutorials.
 
 ## Specs
